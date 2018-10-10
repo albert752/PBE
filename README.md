@@ -2,6 +2,9 @@
 
 This is my PBE progect for my Telecomunications Engeneering degree. Use this code wisely!
 
+## Disclaimer for other students
+Be aware that this project has been licenced under the MIT licence. Although you are free to use it in whatever way you want, you __MUST__ acknowledge me as the original author. So if you use it for your progect you will have to do so.
+
 ## Getting Started
 
 You might have to clone this repo in orther to use the program. Just run:
@@ -19,14 +22,14 @@ And.. thats it! Enjoy!
 sudo apt install python3
 ```
 #### RFID Reader and RPi
-Just get teh reader on eBay for cheap and whatever recent model of the Raspberry Pi 3.
+Just get the reader on eBay for cheap and whatever recent model of the Raspberry Pi 3.
 
 
 ## Running the tests
 
 __WILL BE SOON DESCRIVED__
 
-## LICENCE
+## Licence
 
 This project is licensed under the MIT License - see the [LICENSE.md) file for details
 
