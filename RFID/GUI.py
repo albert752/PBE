@@ -1,10 +1,10 @@
-import threading
-import time
 import _thread
-from RFID import RFID
+import RFID
 import gi
+from time import sleep
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
+import sys
 
 
 class MyWindow(Gtk.Window):
@@ -24,13 +24,6 @@ class MyWindow(Gtk.Window):
         handler_id = self.button1.connect("clicked", self.on_button1_clicked)
         self.box.pack_end(self.button1, True, True, 10)
 
-        # create an image
-        image = Gtk.Image()
-        # set the content of the image as the file filename.png
-        image.set_from_file("./images/tick.png")
-        # add the image to the window
-        self.add(image)
-
         self.label = Gtk.Label(self.labelText)
         self.box.pack_end(self.label, True, True, 10)
 
@@ -44,21 +37,28 @@ class MyWindow(Gtk.Window):
     def setClear(self, value):
         self._clear = value
 
+
 def _readRFID():
     reader = RFID()
     uid = reader.read_uid()
     return uid
 
+
 def _readUID():
-    values = _readRFID()
-    uid = values.split(" ")[8:]
-    uid = "".join(uid).split("0x")
-    uid = "".join(uid)
-    return uid.upper()
+    if len(sys.argv) == 1 or sys.argv[1] != "test":
+        values = _readRFID()
+        uid = values.split(" ")[8:]
+        uid = "".join(uid).split("0x")
+        uid = "".join(uid)
+        return uid.upper()
+    elif sys.argv[1] == "test":
+        sleep(3)
+        return "3B8C9A2H"
+
 
 def labelUpdater(win):
-    while(True):
-        if(win.getClear()):
+    while (True):
+        if (win.getClear()):
             win.setClear(False)
             win.label.set_label(_readUID())
 
