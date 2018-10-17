@@ -1,71 +1,45 @@
-import _thread
-import RFID
+from RFID import RFID
 import gi
-from time import sleep
+import threading
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
-import sys
+from gi.repository import GLib, Gtk, GObject
 
-
-class MyWindow(Gtk.Window):
-    labelText = "Please, Indentify yourself"
-    _clear = True
+class LogInWindow(Gtk.Window):
 
     def __init__(self):
-        # global labelText
+        self.lector = RFID(True)
 
-        Gtk.Window.__init__(self, title="UPC LogIn")
-        self.set_border_width(10)
+        Gtk.Window.__init__(self, title="UPC")
+        self.connect("destroy", Gtk.main_quit)
+        self.set_border_width(20)
 
-        self.box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
-        self.add(self.box)
+        self.vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
+        self.add(self.vbox)
 
-        self.button1 = Gtk.Button(label="Clear")
-        handler_id = self.button1.connect("clicked", self.on_button1_clicked)
-        self.box.pack_end(self.button1, True, True, 10)
+        self.label = Gtk.Label(label="Please identify yourself", justify=Gtk.Justification.LEFT)
+        self.vbox.pack_start(self.label, True, True, 10)
 
-        self.label = Gtk.Label(self.labelText)
-        self.box.pack_end(self.label, True, True, 10)
+        self.button = Gtk.Button(label="Clear")
+        self.button.connect("clicked", self.on_button_clicked)
+        self.vbox.pack_start(self.button, True, True, 10)
 
-    def on_button1_clicked(self, widget):
-        self._clear = True
-        self.label.set_label(self.labelText)
+        self.show_all()
 
-    def getClear(self):
-        return self._clear
-
-    def setClear(self, value):
-        self._clear = value
+        self.thread = threading.Thread(target=self.updateLabel)
+        self.thread.daemon = True
+        self.thread.start()
 
 
-def _readRFID():
-    reader = RFID()
-    uid = reader.read_uid()
-    return uid
+    def updateLabel(self):
+        while(True):
+            self.lector.readThread(self.handler)
 
+    def handler(self, UID):
+        GLib.idle_add(self.label.set_text, UID)
 
-def _readUID():
-    if len(sys.argv) == 1 or sys.argv[1] != "test":
-        values = _readRFID()
-        uid = values.split(" ")[8:]
-        uid = "".join(uid).split("0x")
-        uid = "".join(uid)
-        return uid.upper()
-    elif sys.argv[1] == "test":
-        sleep(3)
-        return "3B8C9A2H"
-
-
-def labelUpdater(win):
-    while (True):
-        if (win.getClear()):
-            win.setClear(False)
-            win.label.set_label(_readUID())
-
+    def on_button_clicked(self, widget):
+        self.label.set_text("Please identify yourself")
 
 if __name__ == '__main__':
-    win = MyWindow()
-    win.connect("destroy", Gtk.main_quit)
-    win.show_all()
-    _thread.start_new_thread(labelUpdater, (win,))
+    win = LogInWindow()
     Gtk.main()
