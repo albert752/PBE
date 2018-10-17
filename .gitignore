@@ -295,3 +295,9 @@ pip-selfcheck.json
 ### LibreOffice template
 # LibreOffice locks
 .~lock.*#
+
+
+## Directories
+Tests
+old
+OriginalLibraryBackup
