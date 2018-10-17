@@ -21,6 +21,10 @@ And.. thats it! Enjoy!
 ```
 sudo apt install python3
 ```
+
+#### py532lib
+It can be found here https://github.com/HubCityLabs/py532lib.
+
 #### RFID Reader and RPi
 Just get the reader on eBay for cheap and whatever recent model of the R
 aspberry Pi 3.
