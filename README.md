@@ -22,7 +22,8 @@ And.. thats it! Enjoy!
 sudo apt install python3
 ```
 #### RFID Reader and RPi
-Just get the reader on eBay for cheap and whatever recent model of the Raspberry Pi 3.
+Just get the reader on eBay for cheap and whatever recent model of the R
+aspberry Pi 3.
 
 
 ## Running the tests
@@ -31,5 +32,6 @@ __WILL BE SOON DESCRIVED__
 
 ## Licence
 
-This project is licensed under the MIT License - see the [LICENSE.md) file for details
+This project is licensed under the MIT License - see the
+[LICENSE.md](LICENSE.md) file for details
 
