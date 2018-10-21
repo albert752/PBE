@@ -5,13 +5,21 @@ from time import sleep
 
 class RFID:
 
-    def __init__(self, test = False):
+    def __init__(self, test=False):
+        """ Initializes the Reader or only the test
+        :param test: If true, enter test mode
+        """
         if not test:
             self.reader = pn532()
             self.reader.SAMconfigure()
         self.test = test
 
     def _read(self, vervose = False):
+        """ Connects and reads the card data. It is blocking.
+
+        :param vervose: If True, prints each byte.
+        :return: None
+        """
         card_data = self.reader.read_mifare().get_data()
         output = ""
         for byte in card_data:
@@ -22,11 +30,19 @@ class RFID:
         return output
 
     def start(self, handler):
+        """ Creates and starts the reader thread.
+        :param handler: GUI handler to manage the read info.
+        :return: None
+        """
         self.thread = threading.Thread(target=self.readUID, args=[handler])
         self.thread.daemon = True
         self.thread.start()
 
     def _parseUID(self):
+        """ Extracts the User Identifier (UID) info from all the infomation read of the Mifare card
+
+        :return: User Identifier (UID)
+        """
         if not self.test:
             values = self._read()
 
@@ -39,6 +55,10 @@ class RFID:
 
 
     def readUID(self, handler):
+        """ Main infinite loop. Executes the GUI handler function each time a card is read.
+        :param handler: GUI handler to manage the read info.
+        :return: None
+        """
         while True:
             handler(self._parseUID())
 
