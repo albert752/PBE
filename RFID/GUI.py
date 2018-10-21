@@ -10,7 +10,6 @@ crossPath = os.path.join(WORKINGDIR, "data", "icons", "cross.png")
 defaultText = "Please identify yourself"
 
 
-
 class LogInWindow(Gtk.Window):
 
     def __init__(self):
@@ -19,6 +18,7 @@ class LogInWindow(Gtk.Window):
         Gtk.Window.__init__(self, title="UPC")
         self.connect("destroy", Gtk.main_quit)
         self.set_border_width(20)
+        self.set_resizable(False)
 
         self.hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         self.add(self.hbox)
