@@ -61,6 +61,10 @@ python3 GUI.py test
 ```
 It will automatically yield the same UID every 3s.
 
+## Authors
+
+* **Albert Azemar i Rovira** - *Initial work* - [albert752](https://github.com/albert752/)
+
 ## Licence
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
