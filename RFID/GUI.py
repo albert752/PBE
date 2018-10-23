@@ -27,9 +27,8 @@ Example:
 
         It will automatically yield the same UID every 3s.
 """
-
 from RFID import RFID
-import gi, os
+import gi, os, sys
 gi.require_version('Gtk', '3.0')
 from gi.repository import GLib, Gtk, GObject, GdkPixbuf
 
@@ -53,8 +52,11 @@ class LogInWindow(Gtk.Window):
         """ Creates the window layout as a horizontal bow with a vertical box and an image. The vertical box contains
         the label and the button. Also creates and  starts the RFID module.
         """
-
-        self.lector = RFID(True)
+        if len(sys.argv) > 1:
+            self.test = sys.argv[1]=="test"
+        else:
+            self.test = False
+        self.lector = RFID(self.test)
 
         Gtk.Window.__init__(self, title="UPC")
         self.connect("destroy", Gtk.main_quit)

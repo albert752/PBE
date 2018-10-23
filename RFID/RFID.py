@@ -1,3 +1,4 @@
+import sys
 from py532lib.i2c import Pn532_i2c as pn532
 import threading
 from time import sleep
@@ -29,14 +30,19 @@ class RFID:
         self.reader.reset_i2c()
         return output
 
-    def start(self, handler):
+    def start(self, handler, join = False):
         """ Creates and starts the reader thread.
         :param handler: GUI handler to manage the read info.
+        :param join: If it is been executed from the main of this module,
+        waits for the thread to end (never ends) to end teh exection of the
+        program. I prevents the program quit and kill the thread.
         :return: None
         """
         self.thread = threading.Thread(target=self.readUID, args=[handler])
         self.thread.daemon = True
         self.thread.start()
+        if join:
+            self.thread.join()
 
     def _parseUID(self):
         """ Extracts the User Identifier (UID) info from all the infomation read of the Mifare card
@@ -64,6 +70,10 @@ class RFID:
 
 
 if __name__ == "__main__":
-    rf = RFID()
-    uid = rf._readUID()
-    print(uid)
+    if len(sys.argv) > 1:
+        isTest = sys.argv[1]=="test"
+    else:
+        isTest = False
+
+    lector = RFID(isTest)
+    lector.start(print, True)
