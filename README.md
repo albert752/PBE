@@ -61,6 +61,9 @@ python3 GUI.py test
 ```
 It will automatically yield the same UID every 3s.
 
+## Screenshots
+![alt text](./screenshots/nocapture.png)
+![alt text](./screenshots/okcapture.png)
 ## Authors
 
 * **Albert Azemar i Rovira** - *Initial work* - [albert752](https://github.com/albert752/)

@@ -1,3 +1,34 @@
+""" General Purpose RFID class
+
+This module contains the implementation of RFID reader w/ the py532lib in I2C
+mode.
+
+Example:
+    With an RFID reader:
+        First of all, connect the RFID reader on the apropiate pins. Here there
+        is a small table:
+
+        | pn532 | RPi B3          |
+        |-------|-----------------|
+        |    5V | 5V (pin 4 or 2) |
+        |   GND | GND (pin 6)     |
+        |   SDA | SDA0 (pin3)     |
+        |   SCL | SCL0 (pin5)     |
+
+        Then run:
+
+        $ python3 RFID.py
+
+
+    Without an RFID reader
+        If your purpose is just to test the app without a reader, you can do so
+        by running this command:
+
+        $ python3 RFID.py test
+
+        It will automatically yields the same UID every 3s.
+"""
+
 import sys
 from py532lib.i2c import Pn532_i2c as pn532
 import threading
@@ -5,7 +36,6 @@ from time import sleep
 
 
 class RFID:
-
     def __init__(self, test=False):
         """ Initializes the Reader or only the test
         :param test: If true, enter test mode
