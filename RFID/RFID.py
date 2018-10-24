@@ -36,6 +36,12 @@ from time import sleep
 
 
 class RFID:
+    '''
+    A RFID reader object. It can be run in the main thread or in a parallel thread
+    :public __init__
+            readUID
+            start
+    '''
     def __init__(self, test=False):
         """ Initializes the Reader or only the test
         :param test: If true, enter test mode
