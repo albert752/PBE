@@ -51,7 +51,7 @@ class RFID:
             self.reader.SAMconfigure()
         self.test = test
 
-    def _read(self, vervose = False):
+    def _read(self, verbose = False):
         """ Connects and reads the card data. It is blocking.
 
         :param vervose: If True, prints each byte.
@@ -60,9 +60,11 @@ class RFID:
         card_data = self.reader.read_mifare().get_data()
         output = ""
         for byte in card_data:
-            if vervose:
+            if verbose:
                 print(hex(byte), end =" ")
             output = " ".join([output, hex(byte)])
+
+        output
         self.reader.reset_i2c()
         return output
 
@@ -94,7 +96,6 @@ class RFID:
         uid = values.split(" ")[8:]
         uid = "".join(uid).replace("0x", "")
         return uid.upper()
-
 
     def readUID(self, handler):
         """ Main infinite loop. Executes the GUI handler function each time a card is read.
