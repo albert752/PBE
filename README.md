@@ -1,4 +1,4 @@
-# PBE Telemàtic
+# PBE Telemàtica
 This is my PBE progect for my Telecomunications Engeneering degree. Use this code wisely!
 
 ## Disclaimer for other students
