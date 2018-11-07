@@ -34,6 +34,7 @@ from py532lib.i2c import Pn532_i2c as pn532
 import threading
 from time import sleep
 
+from gi.repository import GLib
 
 class RFID:
     '''
@@ -103,7 +104,7 @@ class RFID:
         :return: None
         """
         while True:
-            handler(self._parseUID())
+            GLib.idle_add(handler, self._parseUID())
 
 
 if __name__ == "__main__":

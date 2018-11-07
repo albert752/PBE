@@ -92,8 +92,8 @@ class LogInWindow(Gtk.Window):
         :param UID: User Identifier of the read card
         :return: None
         """
-        GLib.idle_add(self.label.set_text, UID.center(len(defaultText)))
-        GLib.idle_add(self.image.set_from_pixbuf, self.tick)
+        self.label.set_text(UID.center(len(defaultText)))
+        self.image.set_from_pixbuf(self.tick)
 
     def on_button_clicked(self, widget):
         """ Function connected to the clicked signal of the button. Restores default values for the label and
