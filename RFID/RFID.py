@@ -1,6 +1,4 @@
 """ General Purpose RFID class
-
-This module contains the implementation of RFID reader w/ the py532lib in I2C
 mode.
 
 Example:
@@ -31,10 +29,7 @@ Example:
 
 import sys
 from py532lib.i2c import Pn532_i2c as pn532
-import threading
 from time import sleep
-
-from gi.repository import GLib
 
 class RFID:
     '''
@@ -69,21 +64,7 @@ class RFID:
         self.reader.reset_i2c()
         return output
 
-    def start(self, handler, join = False):
-        """ Creates and starts the reader thread.
-        :param handler: GUI handler to manage the read info.
-        :param join: If it is been executed from the main of this module,
-        waits for the thread to end (never ends) to end teh exection of the
-        program. I prevents the program quit and kill the thread.
-        :return: None
-        """
-        self.thread = threading.Thread(target=self.readUID, args=[handler])
-        self.thread.daemon = True
-        self.thread.start()
-        if join:
-            self.thread.join()
-
-    def _parseUID(self):
+    def readUID(self):
         """ Extracts the User Identifier (UID) info from all the infomation read of the Mifare card
 
         :return: User Identifier (UID)
@@ -98,15 +79,6 @@ class RFID:
         uid = "".join(uid).replace("0x", "")
         return uid.upper()
 
-    def readUID(self, handler):
-        """ Main infinite loop. Executes the GUI handler function each time a card is read.
-        :param handler: GUI handler to manage the read info.
-        :return: None
-        """
-        while True:
-            GLib.idle_add(handler, self._parseUID())
-
-
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         isTest = sys.argv[1]=="test"
@@ -114,4 +86,5 @@ if __name__ == "__main__":
         isTest = False
 
     lector = RFID(isTest)
-    lector.start(print, True)
+    while True:
+        rint("Your UID is " + lector.readUID())
