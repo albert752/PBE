@@ -1,4 +1,4 @@
-# PBE Telemàtica (Not master)(Not develop)
+# PBE Telemàtica
 
 This is my PBE progect for my Telecomunications Engeneering degree. Use this code wisely!
 
