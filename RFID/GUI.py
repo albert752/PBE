@@ -27,7 +27,7 @@ Example:
 
         It will automatically yield the same UID every 3s.
 """
-from ReaderThread import startReader
+from ReaderThread import ReaderThread
 import gi, os, sys
 gi.require_version('Gtk', '3.0')
 from gi.repository import GLib, Gtk, GObject, GdkPixbuf
@@ -53,9 +53,11 @@ class LogInWindow(Gtk.Window):
         the label and the button. Also creates and  starts the RFID module.
         """
         if len(sys.argv) > 1:
-            self.test = sys.argv[1]=="test"
+            self.isTest = sys.argv[1]=="test"
         else:
-            self.test = False
+            self.isTest = False
+
+        self.reader = ReaderThread(self.isTest, self.onUID)
 
         Gtk.Window.__init__(self, title="UPC")
         self.connect("destroy", Gtk.main_quit)
@@ -84,7 +86,7 @@ class LogInWindow(Gtk.Window):
         self.hbox.pack_start(self.image, True, True, 10)
         self.show_all()
 
-        startReader(self.onUID, self.test)
+        self.reader.startReader()
 
     def onUID(self, UID):
         """ Handler for the RFID module to change the label text and the image pixel source
@@ -102,7 +104,7 @@ class LogInWindow(Gtk.Window):
         """
         self.label.set_text("Please identify yourself")
         self.image.set_from_pixbuf(self.cross)
-
+        self.reader.startReader()
 
 if __name__ == '__main__':
     win = LogInWindow()

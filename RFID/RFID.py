@@ -46,7 +46,7 @@ class RFID:
             self.reader = pn532()
             self.reader.SAMconfigure()
         self.test = test
-
+        self.i = 0
     def _read(self, verbose = False):
         """ Connects and reads the card data. It is blocking.
 
@@ -74,9 +74,10 @@ class RFID:
 
         else:
             sleep(3)
-            values = "0x3b 0x5c 0x3a 0x7b 0x2d 0x9a 0x8c 0x6e 0x3b 0x8c 0x9a 0x2c"
-        uid = values.split(" ")[8:]
+            values = ["0x3b 0x5c 0x3a 0x7b 0x2d 0x9a 0x8c 0x6e 0x3b 0x8c 0x9a 0x29" ,"0x3b 0x5c 0x3a 0x7b 0x2d 0x9a 0x8c 0x6e 0x3b 0x8c 0x9a 0x89"]
+        uid = values[self.i%2].split(" ")[8:]
         uid = "".join(uid).replace("0x", "")
+        self.i += 1
         return uid.upper()
 
 if __name__ == "__main__":
