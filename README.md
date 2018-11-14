@@ -1,5 +1,4 @@
 # PBE Telemàtica
-
 This is my PBE progect for my Telecomunications Engeneering degree. Use this code wisely!
 
 ## Disclaimer for other students
@@ -67,6 +66,8 @@ It will automatically yield the same UID every 3s.
 ## Authors
 
 * **Albert Azemar i Rovira** - *Initial work* - [albert752](https://github.com/albert752/)
+
+* **Marc Sarri** - *LCD Functionality* - [marcmc](https://github.com/marcmc/)
 
 ## Licence
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
