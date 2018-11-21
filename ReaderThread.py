@@ -7,7 +7,7 @@ class ReaderThread:
 	def __init__(self, isTest=False, handler):
 		self.reader=RFID()
 		self.handler=handler
-	def start(self):
+	def startReader(self):
 		self.thread=threading.Thread(target=self.readUID, args=[self.handler])
 		self.thread.daemon=True
 		self.thread.start()
