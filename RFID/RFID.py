@@ -50,7 +50,7 @@ class RFID:
     def _read(self, verbose = False):
         """ Connects and reads the card data. It is blocking.
 
-        :param vervose: If True, prints each byte.
+        :param verbose: If True, prints each byte.
         :return: None
         """
         card_data = self.reader.read_mifare().get_data()
