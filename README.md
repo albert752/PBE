@@ -36,6 +36,7 @@ Just get the reader on eBay for cheap and whatever recent model of the Raspberry
 
 ## Running the tests
 ### With an RFID reader
+#### I2C
 First of all, connect the RFID reader on the apropiate pins. Here there
 is a small table:
 
@@ -68,6 +69,8 @@ It will automatically yield the same UID every 3s.
 * **Albert Azemar i Rovira** - *Initial work* - [albert752](https://github.com/albert752/)
 
 * **Marc Sarri** - *LCD Functionality* - [marcmc](https://github.com/marcmc/)
+
+* __Pol Perez__ - _PN532 in UART mode_ - [Mefiso](https://github.com/Mefiso)
 
 ## Licence
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
