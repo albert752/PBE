@@ -1,5 +1,5 @@
 # PBE Telemàtica
-This is my PBE progect for my Telecomunications Engeneering degree. Use this code wisely!
+This is my PBE project for my Telecomunications Engeneering degree. Use this code wisely!
 
 ## Disclaimer for other students
 Be aware that this project has been licenced under the MIT licence. Although you are free to use it in whatever way you want, you __MUST__ acknowledge me as the original author. So if you use it for your progect you will have to do so.
