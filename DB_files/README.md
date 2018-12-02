@@ -25,3 +25,6 @@ mongoimport -d suparurdinado -c Users --file Users.json
 mongoimport -d suparurdinado -c Marks --file Marks.json
 ```
 The database is ready to work with the server.
+
+## Author
+* **Pol Pérez** - [Mefiso](https://github.com/Mefiso)
