@@ -4,11 +4,17 @@ First of all, you must install mongodb in your computer. Here is a useful [link]
 
 ## Creation of the database
 Once you've installed mongodb, you should run it. Typically:
-`sudo service mongod start`
+```
+sudo service mongod start
+```
 Then enter the shell:
-`mongo`
+```
+mongo
+```
 Now you're ready to create a db. So then, you must create a db named suparurdinado (which will be the database of this project) by typing:
-`use suparurdinado`
+```
+use suparurdinado
+```
 You have now created an empty database that you will fill with the collections we provide here.
 
 ## Import collections
