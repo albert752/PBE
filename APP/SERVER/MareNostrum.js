@@ -6,7 +6,7 @@ var MongoClient = require('mongodb').MongoClient;
 var url_db = "mongodb://localhost:27017/";
 const querystring = require('querystring');
 
-
+//Marks?{"subject": "DSBM", "mark": {"$gte":8}}&limit=1
 http.createServer( function (request, response) {
     var query = request.url
     console.log("[SRV] Received " + query + " as query.")
