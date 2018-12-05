@@ -1,0 +1,4 @@
+{ "_id" : { "$oid" : "5bfead6e67954480fb03e439" }, "uid" : "8BBBF395", "name" : "parcial 16/11/18", "subject" : "DSBM", "mark" : 9.25 }
+{ "_id" : { "$oid" : "5bfead6e67954480fb03e43b" }, "uid" : "8BBBF395", "name" : "parcial 25/11/18", "subject" : "RP", "mark" : 8.0 }
+{ "_id" : { "$oid" : "5bfead6e67954480fb03e43a" }, "uid" : "4B82F395", "name" : "parcial 16/11/18", "subject" : "DSBM", "mark" : 8.0 }
+{ "_id" : { "$oid" : "5bfead6e67954480fb03e43c" }, "uid" : "4B82F395","name" : "parcial 25/11/18", "subject" : "RP", "mark" : 6.25 }
