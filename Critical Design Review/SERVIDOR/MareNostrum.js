@@ -45,11 +45,9 @@ function request_db(path, response){
         limit_and_query = parse_query(path);
         if (err) throw err;
         var database = db.db("suparurdinado");
-		var and_expression = {};
-		  for(var key in limit_and_query[1][0]) {
-        		if(limit_and_query[1][0].hasOwnProperty(key)){
-            			and_expression["$and"]= limit_and_query[1];
-    			}
+		var and_expression = {};		  
+		if(limit_and_query[1].length > 0){
+            		and_expression["$and"]= limit_and_query[1];
 		}
 		console.log(and_expression);
         database.collection(collection).find(and_expression, { _id:0, uid:0}).limit(limit_and_query[0]).toArray( function(err, result) {
