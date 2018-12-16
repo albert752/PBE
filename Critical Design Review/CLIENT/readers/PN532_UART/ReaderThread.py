@@ -1,18 +1,17 @@
-from pynfc import Nfc, Desfire, Timeout
+import threading
+import time
+from .RFID1 import RFID
+from gi.repository import GLib
 
-class RFID:
-	def __init__(self):
-		self.reader=Nfc("pn532_uart:/dev/ttyAMA0:115200")
+class ReaderThread:
+	def __init__(self, isTest, handler):
+		self.reader=RFID()
+		self.handler=handler
+	def startReader(self):
+		self.thread=threading.Thread(target=self.readUID, args=[self.handler])
+		self.thread.daemon=True
+		self.thread.start()
 
-	def read(self):
-		for target in self.reader.poll():
-			try:
-				id=target.uid
-				return id
-			except Timeout:
-				pass
+	def readUID(self, handler):
+		GLib.idle_add(handler, self.reader.read().upper())
 
-if __name__=="__main__":
-	rfid=RFID()
-	id=rfid.read()
-	print("User ID: ", id.upper())

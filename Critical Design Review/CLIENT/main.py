@@ -1,7 +1,8 @@
-from ReaderThread import ReaderThread
+from readers.PN532_UART.ReaderThread import ReaderThread
 from query.QueryThread import QueryThreader
 from Watchdog import Watchdog
 import gi, os, sys
+import datetime
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import GLib, Gtk, GObject, GdkPixbuf, Gdk
@@ -121,7 +122,7 @@ class Window(Gtk.Window):
         self.scrolled_window.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.ALWAYS)
 
         self.timetables_store = Gtk.ListStore(str, str, str, str, str)  # The last str holds the colour in hex
-        self.marks_class_store = Gtk.ListStore(str, str, int, str)   # The last str holds the colour in hex
+        self.marks_class_store = Gtk.ListStore(str, str, float, str)   # The last str holds the colour in hex
         self.tasks_class_store = Gtk.ListStore(str, str, str, str) 
         self.tree = Gtk.TreeView()
         self.scrolled_window.add(self.tree)
@@ -129,7 +130,7 @@ class Window(Gtk.Window):
         self.scrolled_window.set_min_content_height(300)
         self.titles = {
                         "Timetables": ["day", "hour", "subject", "room"],
-                        "Tasks": ["data", "subject", "name"],
+                        "Tasks": ["date", "subject", "name"],
                         "Marks": ["subject", "name", "mark"]
                         }
 
@@ -311,7 +312,12 @@ class Window(Gtk.Window):
         for i, row in enumerate(data):
             aux = []
             for title in self.titles[type_of_query]:
-                aux.append(row[title])
+                add_cell=row[title]
+                if title=="date":
+                    add_cell=add_cell.split("T")[0]
+                elif title=="hour":
+                    add_cell=str(datetime.timedelta(hours=row[title]))
+                aux.append(add_cell)
                 if i% 2 == 0:
                     background_color = "#fff"
                 else:

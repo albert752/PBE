@@ -26,7 +26,7 @@ class QueryThreader:
             req = req+'?'
         url = "http://" + self.ip + ':' + self.port + '/' + req + '&uid='+self.uid
         get(url, handler, req.split('?')[0])
-        
+
 
 
 if __name__ == '__main__':
