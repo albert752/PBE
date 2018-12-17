@@ -1,6 +1,8 @@
 from gi.repository import GLib
 from threading import  Thread
 import requests
+import Jibril
+
 
 def get(url, handler, args):
         """Makes a simple request  asking for thecomplete name of the user. Also
