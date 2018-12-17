@@ -1,7 +1,7 @@
 from Crypto.Cipher import XOR
 import base64
 from pprint import pprint as pp
-
+import json
 
 def encrypt_message(message, key):
     cipher = XOR.new(key)
@@ -29,21 +29,7 @@ def encrypt_data(data, key):
 
 
 if __name__ == '__main__':
-    '''
-    if input("Do you want to Code or Decode: ") == 'C':
-        key = input("Enter the key: ")
-        message = input("Enter the message to encrypt: ")
-        criptogram = encrypt_message(message, key)
-        print("The cryptogram is " + str(criptogram))
-    else:
-        key = input("Enter the key: ")
-        criptogram = input("Enter the message to dencrypt: ")
-        print("The decrypted message is " + str(decrypt_message(criptogram, key)))
-    '''
-    response = [{'uid': 'A6F8A8B7', 'Subject': 'DSBM', 'Mark': '8.5'}, {'uid': 'A6F8A8B7', 'Subject': 'PBE', 'Mark': '9'}]
-    key = input("Enter the key: ")
-    pp(response)
-    data = encrypt_data(response, key)
-    pp(response)
-    data = decrypt_data(response, key)
-    pp(response)
+    path = input("Enter JSONs file path to encrypt: ")
+	with open('filename.txt', 'r') as f:
+    	array = json.load(f)
+pp(array)
