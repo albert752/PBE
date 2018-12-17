@@ -12,13 +12,7 @@ def decrypt_message(criptogram, key):
     return cipher.decrypt(base64.b64decode(criptogram))
 
 
-def get_hash():
-    pass
-
-
 if __name__ == '__main__':
-    for i in range(10):
-        print(hash("this is a fuckfyujing test motherfuckernn"))
     if input("Do you want to Code or Decode: ") == 'C':
         key = input("Enter the key: ")
         message = input("Enter the message to encrypt: ")
