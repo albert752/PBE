@@ -201,7 +201,7 @@ class Window(Gtk.Window):
         if username :
             self.image.set_from_pixbuf(self.tick)
             self.ok_button.set_sensitive(True)
-            self.username_label.set_text(username[0]['name'])
+            self.username_label.set_text(username[0]['user_name'])
         else:
             self.image.set_from_pixbuf(self.cross)
             self.uid_label.set_name("colection_label_error")
