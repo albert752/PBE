@@ -259,7 +259,7 @@ class Window(Gtk.Window):
 
         elif ev.keyval == Gdk.KEY_Return:  # Value for enter
             print(widget.get_text())
-            self.server.send_query(self.on_tree, widget.get_text(), True)
+            self.server.send_query(self.on_tree, widget.get_text(), "Secure_" in widget.get_text() )
             print(self.get_size())
 
     def on_tree(self, data, type_of_query):
@@ -327,7 +327,7 @@ class Window(Gtk.Window):
                 else:
                     background_color = "#bbb"
             self.tree.get_model().append(tuple(aux)+(background_color,))
-            #self.tree.get_model().append(aux)
+
 
     def _set_tree_titles(self, data, type_of_query):
         """Sets the titles of the data to be displayed to the store
@@ -340,7 +340,6 @@ class Window(Gtk.Window):
         self.tree.get_model().clear()
         for i, title in enumerate(titles):
             renderer = Gtk.CellRendererText()
-            #column = Gtk.TreeViewColumn(title, renderer, text=i) 
             column = Gtk.TreeViewColumn(title, renderer, text=i) 
             column.pack_start(renderer, True)
             column.add_attribute(renderer, "text", i)

@@ -34,13 +34,11 @@ class QueryThreader:
             req = req+'?'
         if secure:
             url = "http://" + self.ip + ':' + self.port + '/' + req + '&uid='+self.hash_uid
+            get(url, handler, args=req.split('?')[0], key=self.uid)
         else:
             url = "http://" + self.ip + ':' + self.port + '/' + req + '&uid='+self.uid
+            get(url, handler, args=req.split('?')[0])
         
-        get(url, handler, args=req.split('?')[0], key=self.uid)
-
-
-
 if __name__ == '__main__':
     server = QueryThreader('localhost', '8081')
     server._http_request(print, 'test')
