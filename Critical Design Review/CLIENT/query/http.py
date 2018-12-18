@@ -15,6 +15,7 @@ def get(url, handler, args):
         def target_thread(url, handler, args):
             try:
                 data = requests.get(url, verify=False, timeout=10).json() 
+				data = 
             except requests.exceptions.RequestException as e: 
                 data = "Timeout error"
             GLib.idle_add(handler, data, args)

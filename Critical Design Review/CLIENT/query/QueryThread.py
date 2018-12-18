@@ -5,6 +5,7 @@ class QueryThreader:
         self.ip = ip
         self.port = port
         self.hash_uid = None
+        self.uid = None
         self.timeout = 10
 
     def get_username(self, uid, handler):
@@ -13,7 +14,8 @@ class QueryThreader:
         :returns:  None
         """
         self.hash_uid = hash(uid)
-        url = "http://" + self.ip + ':' + self.port + '/Users?uid='+self.hash_uid
+        self.uid =uid
+        url = "http://" + self.ip + ':' + self.port + '/Users?uid='+uid
         get(url, handler, None)
 
     def send_query(self,handler , req):
