@@ -91,6 +91,14 @@
 				function on_cross(){
 					document.getElementById("alerts").style.visibility = "hidden";
 				}
+				document.addEventListener('keyup', function(event) {
+					if(event.keyCode == 13) {
+						on_button()
+					}
+					else if(event.keyCode == 39) {
+						alert('I would love to say thank you\nto my PBE colleagues <3\n\n(c) by IAG+L');
+					}
+				});
 		</script> 
 	</head>
    
@@ -113,7 +121,7 @@
 			</div>
 			<div class="col-sm-10">
 			  <div class="input-group">
-			  <input type="text" class="form-control" name="entry" placeholder="Enter your query..." value="Timetables">
+			  <input type="text" class="form-control" name="entry" placeholder="Enter your query..." value="Timetables" >
 			  <span class="input-group-btn">
 				<button class="btn btn-default" type="button" onclick="on_button()">Go, Jonny Go!</button>
 			  </span>
