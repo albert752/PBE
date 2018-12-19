@@ -309,6 +309,11 @@ class Window(Gtk.Window):
         type_of_query: key foer the self.titles dict
         :return: None
         """
+	"""if(type_of_query
+	dies = {0: "Dilluns", 1: "Dimarts", 2: "Dimecres", 3: "Dijous", 4: "Divendres", 5: "Divendres", 6: "Diumenge"}
+	today_day = dies[datetime.date.today().weekday()]
+	today_hour = datetime.datetime.today().hour
+	"""
         for i, row in enumerate(data):
             aux = []
             for title in self.titles[type_of_query]:
