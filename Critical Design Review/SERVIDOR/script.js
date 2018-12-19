@@ -68,6 +68,7 @@
 
                 for (var j = 0; j < col.length; j++) {
                     var tabCell = tr.insertCell(-1);
+
 						if(col[j] == "date"){
 							tabCell.innerHTML = data[i][col[j]].split("T")[0]
 						}else{ 
