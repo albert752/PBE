@@ -18,9 +18,10 @@
 					xhttp.onreadystatechange = function() {
 						 if (this.readyState == 4 && this.status == 200) {
 							if(this.responseText== "[]"){
-								document.getElementById("alerts").setAttribute("class", "alert alert-danger");
+								document.getElementById("alerts").setAttribute("class", "alert alert-danger ");
 								document.getElementById("alerts").style.visibility = "";
 								document.getElementById("alert_text").innerHTML = "<strong>Oh snap!</strong> The UID or the reqeusted information must be wrong."
+								document.getElementById("results").setAttribute("id", "results_hidden");
 							}else{
 								get_name() 
 								CreateTableFromJSON(JSON.parse(this.responseText), query.split("?")[0]) 
@@ -40,7 +41,7 @@
 						 if (this.readyState == 4 && this.status == 200) {
 							text = text + JSON.parse(this.responseText)[0]["user_name"];
 							text = text + '.';
-							document.getElementById("alerts").setAttribute("class", "alert alert-success");
+							document.getElementById("alerts").setAttribute("class", "alert alert-success ");
 							document.getElementById("alerts").style.visibility = "";
 							document.getElementById("alert_text").innerHTML = text;
 						 }
@@ -50,7 +51,8 @@
 					xhttp.send("JSON Data");
 				}
 
-				function CreateTableFromJSON(data) {
+				function CreateTableFromJSON(data, title) {
+						document.getElementById("greeter").innerHTML = title;
 						var col = [];
 						for (var i = 0; i < data.length; i++) {
 							for (var key in data[i]) {
@@ -61,6 +63,7 @@
 						}
 
 						var table = document.createElement("table");
+						table.setAttribute("class", "table");
 						var tr = table.insertRow(-1);              
 
 						for (var i = 0; i < col.length; i++) {
@@ -81,7 +84,7 @@
 				
 					var divContainer = document.getElementById("showData");
 					divContainer.innerHTML = "";
-					table.setAttribute("class", "table");
+					
 					divContainer.appendChild(table);
 					document.getElementById("results_hidden").setAttribute("id", "results");
 				}
@@ -100,9 +103,8 @@
 		</div>
 		<div class="container" >
 			<div class="row" >
-				<div class="alert alert-info alert-dismissible" role="alert" id="alerts" >
-			  <button type="button" class="close" onclick="on_cross()" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<div id = "alert_text"><strong>Tip:</strong> Collection?constrain1=value1&constrain2=values2...</div>
+				<div class="alert alert-info" role="alert" id="alerts" >
+			<div id = "alert_text"><strong>Tip:</strong> Collection?constrain1=value1&constrain2=values2... And do not forget your card at home!</div>
 			</div>
 			</div>
 		  <div class="row">
