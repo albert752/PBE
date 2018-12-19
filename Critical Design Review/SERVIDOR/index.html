@@ -3,21 +3,10 @@
 		<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<title>UPC Manager</title>
-		<style>
-		    th, td, p, input {
-		        font:14px ;
-		    }
-		    table, th, td 
-		    {
-		        border: solid 2px #DDD;
-		        border-collapse: collapse;
-		        padding: 2px 3px;
-		        text-align: center;
-		    }
-		    th {
-		        font-weight:bold;
-		    }
-    	</style>
+		<style type="text/css">
+			#results_hidden{ display:none; }
+			#results{padding: 15px;}
+		</style>
 		<script type="text/javascript">
 			 function on_button() {
 					var xhttp = new XMLHttpRequest();
@@ -84,27 +73,44 @@
 				
 				var divContainer = document.getElementById("showData");
 				divContainer.innerHTML = "";
+				table.setAttribute("class", "table");
 				divContainer.appendChild(table);
+				document.getElementById("results_hidden").setAttribute("id", "results");
 			}
 		</script> 
 	</head>
    
    <body>
-		<h1>Welcome to MareNostrum Web Client</h1>
-		<input type="text" size="6" name="uid" value="4B82F395">
-		<input type="text" name="entry" value="Marks">
-		<button type="submit" onclick="on_button()">Search</button>
-		<button type="button" class="btn btn-primary" onclick="on_button()">Primary</button>
-		<div class="col-lg-6">
-			<div class="input-group">
-			  <input type="text" class="form-control" placeholder="Search for...">
+		
+	<div class="page">
+		<div class="page-header">
+			<h1>Welcome to MareNostrums Web Server <small>An IAG+L project</small></h1>
+		</div>
+		<div class="container">
+		  <div class="row">
+			<div class="col-sm-2">
+				<input type="text" class="form-control" placeholder="Enter your UID..." name="uid" value="4B82F395" size="6">
+			</div>
+			<div class="col-sm-10">
+			  <div class="input-group">
+			  <input type="text" class="form-control" name="entry" placeholder="Enter your query..." value="Timetables">
 			  <span class="input-group-btn">
-				<button class="btn btn-default" type="button">Go!</button>
+				<button class="btn btn-default" type="button" onclick="on_button()">Go, Jonny Go!</button>
 			  </span>
 			</div><!-- /input-group -->
-		  </div><!-- /.col-lg-6 -->
-		</div><!-- /.row -->
-		<p id="greeter"></p>
-    	<p id="showData"></p>
+			</div>
+		  </div>
+		<div class="row" id="results_hidden">
+			<div class="panel panel-default">
+		  	<!-- Default panel contents -->
+		  	<div class="panel-heading" id="greeter" ></div>
+		  	<!-- Table -->
+		  	<div id="showData">
+		  	</div>
+		</div>
+		</div>
+		</div>
+	</div>
+		
    </body>
 </html>
