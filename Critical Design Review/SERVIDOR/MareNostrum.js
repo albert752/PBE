@@ -14,9 +14,22 @@ http.createServer( function (request, response) {
         console.log("[HTM] Response as webpage")
         show_API_info(response)
     }else if( query == "/favicon.ico"){
-	console.log("[HTM] Response as webpage")
+		console.log("[HTM] Response as webpage")
         show_API_info(response)
-    }else{
+	
+	}else if(query == '/script.js'){
+		fs.readFile("script.js", function (err, data) {
+        if (err) {
+            console.log(err);
+            response.writeHead(404, {'Content-Type': 'text/html'});
+        } else {
+            response.writeHead(200, {'Content-Type': 'text/html'});
+            response.write(data.toString());
+        }
+        response.end();
+    });
+
+	}else{
         console.log("[API] Response as API")
         request_db(query, response)
     }
