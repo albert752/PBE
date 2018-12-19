@@ -17,8 +17,14 @@
 					query = query + "&uid=" + document.getElementsByName('uid')[0].value
 					xhttp.onreadystatechange = function() {
 						 if (this.readyState == 4 && this.status == 200) {
-							get_name() 
-							CreateTableFromJSON(JSON.parse(this.responseText)) 
+							if(this.responseText== "[]"){
+								document.getElementById("alerts").setAttribute("class", "alert alert-danger");
+								document.getElementById("alerts").style.visibility = "";
+								document.getElementById("alert_text").innerHTML = "<strong>Oh snap!</strong> The UID or the reqeusted information must be wrong."
+							}else{
+								get_name() 
+								CreateTableFromJSON(JSON.parse(this.responseText), query.split("?")[0]) 
+							}
 						 }
 					};
 					xhttp.open("POST", query, true);
@@ -28,13 +34,15 @@
 				
 				function get_name() {
 					var xhttp = new XMLHttpRequest();
-					var query ="Users?&uid=" + document.getElementsByName('uid')[0].value
-					var text = "This is the information you requested, "
+					var query ="Users?&uid=" + document.getElementsByName('uid')[0].value;
+					var text = "<strong>Everything Ok!</strong> This is the information you requested, ";
 					xhttp.onreadystatechange = function() {
 						 if (this.readyState == 4 && this.status == 200) {
 							text = text + JSON.parse(this.responseText)[0]["user_name"];
 							text = text + '.';
-							document.getElementById("greeter").innerHTML = text;
+							document.getElementById("alerts").setAttribute("class", "alert alert-success");
+							document.getElementById("alerts").style.visibility = "";
+							document.getElementById("alert_text").innerHTML = text;
 						 }
 					};
 					xhttp.open("POST", query, true);
@@ -43,50 +51,60 @@
 				}
 
 				function CreateTableFromJSON(data) {
-				var col = [];
-				for (var i = 0; i < data.length; i++) {
-				    for (var key in data[i]) {
-				        if (col.indexOf(key) === -1) {
-				            col.push(key);
-				        }
-				    }
-				}
+						var col = [];
+						for (var i = 0; i < data.length; i++) {
+							for (var key in data[i]) {
+								if (col.indexOf(key) === -1) {
+								    col.push(key);
+								}
+							}
+						}
 
-				var table = document.createElement("table");
-				var tr = table.insertRow(-1);              
+						var table = document.createElement("table");
+						var tr = table.insertRow(-1);              
 
-				for (var i = 0; i < col.length; i++) {
-				    var th = document.createElement("th");   
-				    th.innerHTML = col[i];
-				    tr.appendChild(th);
-				}
+						for (var i = 0; i < col.length; i++) {
+							var th = document.createElement("th");   
+							th.innerHTML = col[i];
+							tr.appendChild(th);
+						}
 
-				for (var i = 0; i < data.length; i++) {
+						for (var i = 0; i < data.length; i++) {
 
-				    tr = table.insertRow(-1);
+							tr = table.insertRow(-1);
 
-				    for (var j = 0; j < col.length; j++) {
-				        var tabCell = tr.insertCell(-1);
-				        tabCell.innerHTML = data[i][col[j]];
-				    }
-				}
+							for (var j = 0; j < col.length; j++) {
+								var tabCell = tr.insertCell(-1);
+								tabCell.innerHTML = data[i][col[j]];
+							}
+					}
 				
-				var divContainer = document.getElementById("showData");
-				divContainer.innerHTML = "";
-				table.setAttribute("class", "table");
-				divContainer.appendChild(table);
-				document.getElementById("results_hidden").setAttribute("id", "results");
-			}
+					var divContainer = document.getElementById("showData");
+					divContainer.innerHTML = "";
+					table.setAttribute("class", "table");
+					divContainer.appendChild(table);
+					document.getElementById("results_hidden").setAttribute("id", "results");
+				}
+				function on_cross(){
+					document.getElementById("alerts").style.visibility = "hidden";
+				}
 		</script> 
 	</head>
    
    <body>
 		
 	<div class="page">
-		<div class="page-header">
-			<h1>Welcome to MareNostrums Web Server <small>An IAG+L project</small></h1>
+		<div class="page-header" align=center>
+
+			<h1>Welcome to MareNostrums Web Server <br><small>An IAG+L project</small></h1>
 		</div>
-		<div class="container">
+		<div class="container" >
+			<div class="row" >
+				<div class="alert alert-info alert-dismissible" role="alert" id="alerts" >
+			  <button type="button" class="close" onclick="on_cross()" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<div id = "alert_text"><strong>Tip:</strong> Collection?constrain1=value1&constrain2=values2...</div>
+			</div>
+			</div>
 		  <div class="row">
 			<div class="col-sm-2">
 				<input type="text" class="form-control" placeholder="Enter your UID..." name="uid" value="4B82F395" size="6">
