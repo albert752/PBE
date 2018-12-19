@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title>UPC Manager</title>
+		<script type="text/javascript">
+			 function UserAction() {
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+						 if (this.readyState == 4 && this.status == 200) {
+							alert("teste")
+							 CreateTableFromJSON(JSON.parse(this.responseText.));
+						 }
+					};
+					xhttp.open("POST", "Timetables", true);
+					xhttp.setRequestHeader("Content-type", "application/json");
+					xhttp.send("Your JSON Data Here");
+				}
+		</script> 
+	</head>
+   
+   <body>
+	
+      <p>Click the following button and see result</p>
+      
+      <form>
+         <input type="button" onclick="sayHello()" value="Say Hello" />
+		<button type="submit" onclick="UserAction()">Search</button>
+      </form>
+
+      
+   </body>
+</html>

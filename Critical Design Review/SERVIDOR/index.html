@@ -1,0 +1,110 @@
+<html>
+	<head>
+		<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<title>UPC Manager</title>
+		<style>
+		    th, td, p, input {
+		        font:14px ;
+		    }
+		    table, th, td 
+		    {
+		        border: solid 2px #DDD;
+		        border-collapse: collapse;
+		        padding: 2px 3px;
+		        text-align: center;
+		    }
+		    th {
+		        font-weight:bold;
+		    }
+    	</style>
+		<script type="text/javascript">
+			 function on_button() {
+					var xhttp = new XMLHttpRequest();
+					var query = document.getElementsByName('entry')[0].value
+					if (!query.includes('?')){
+						query = query + '?';
+					}
+					query = query + "&uid=" + document.getElementsByName('uid')[0].value
+					xhttp.onreadystatechange = function() {
+						 if (this.readyState == 4 && this.status == 200) {
+							get_name() 
+							CreateTableFromJSON(JSON.parse(this.responseText)) 
+						 }
+					};
+					xhttp.open("POST", query, true);
+					xhttp.setRequestHeader("Content-type", "application/json");
+					xhttp.send("JSON Data");
+				}
+				
+				function get_name() {
+					var xhttp = new XMLHttpRequest();
+					var query ="Users?&uid=" + document.getElementsByName('uid')[0].value
+					var text = "This is the information you requested, "
+					xhttp.onreadystatechange = function() {
+						 if (this.readyState == 4 && this.status == 200) {
+							text = text + JSON.parse(this.responseText)[0]["user_name"];
+							text = text + '.';
+							document.getElementById("greeter").innerHTML = text;
+						 }
+					};
+					xhttp.open("POST", query, true);
+					xhttp.setRequestHeader("Content-type", "application/json");
+					xhttp.send("JSON Data");
+				}
+
+				function CreateTableFromJSON(data) {
+				var col = [];
+				for (var i = 0; i < data.length; i++) {
+				    for (var key in data[i]) {
+				        if (col.indexOf(key) === -1) {
+				            col.push(key);
+				        }
+				    }
+				}
+
+				var table = document.createElement("table");
+				var tr = table.insertRow(-1);              
+
+				for (var i = 0; i < col.length; i++) {
+				    var th = document.createElement("th");   
+				    th.innerHTML = col[i];
+				    tr.appendChild(th);
+				}
+
+				for (var i = 0; i < data.length; i++) {
+
+				    tr = table.insertRow(-1);
+
+				    for (var j = 0; j < col.length; j++) {
+				        var tabCell = tr.insertCell(-1);
+				        tabCell.innerHTML = data[i][col[j]];
+				    }
+				}
+				
+				var divContainer = document.getElementById("showData");
+				divContainer.innerHTML = "";
+				divContainer.appendChild(table);
+			}
+		</script> 
+	</head>
+   
+   <body>
+		<h1>Welcome to MareNostrum Web Client</h1>
+		<input type="text" size="6" name="uid" value="4B82F395">
+		<input type="text" name="entry" value="Marks">
+		<button type="submit" onclick="on_button()">Search</button>
+		<button type="button" class="btn btn-primary" onclick="on_button()">Primary</button>
+		<div class="col-lg-6">
+			<div class="input-group">
+			  <input type="text" class="form-control" placeholder="Search for...">
+			  <span class="input-group-btn">
+				<button class="btn btn-default" type="button">Go!</button>
+			  </span>
+			</div><!-- /input-group -->
+		  </div><!-- /.col-lg-6 -->
+		</div><!-- /.row -->
+		<p id="greeter"></p>
+    	<p id="showData"></p>
+   </body>
+</html>

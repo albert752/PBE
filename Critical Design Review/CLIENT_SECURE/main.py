@@ -205,17 +205,6 @@ class Window(Gtk.Window):
         else:
             self.image.set_from_pixbuf(self.cross)
             self.uid_label.set_name("colection_label_error")
-  # def on_wrong_label(self, message):
-     #   """ Handler for the QueryThread module to change the label text to wronh
-     #   :param None
-     #   :return: None
-      #  """
-       # self.ok_button.set_sensitive(False)
-        #self.image.set_from_pixbuf(self.cross)
-       # if message is not None:
-       #     self.uid_label.set_text(message.center(len(defaultText)))
-        #    self.uid_label.set_name("colection_label_error")
-
 
     def login_to_default(self):
         """ Restores default LogIn window parameters

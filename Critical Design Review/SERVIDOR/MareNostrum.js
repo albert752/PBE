@@ -10,7 +10,7 @@ const querystring = require('querystring');
 http.createServer( function (request, response) {
     var query = request.url
     console.log("[SRV] Received " + query + " as query.")
-    if (query == "/"){
+    if (query == '/' || query == '/?'){
         console.log("[HTM] Response as webpage")
         show_API_info(response)
     }else if( query == "/favicon.ico"){
