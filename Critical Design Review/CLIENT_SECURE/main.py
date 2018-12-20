@@ -1,4 +1,4 @@
-from ReaderThread import ReaderThread
+from readers.PN532_UART.ReaderThread import ReaderThread
 from query.QueryThread import QueryThreader
 from Watchdog import Watchdog
 import gi, os, sys
@@ -302,6 +302,21 @@ class Window(Gtk.Window):
         type_of_query: key foer the self.titles dict
         :return: None
         """
+        dies ={0: "Dilluns", 1: "Dimarts", 2:"Dimecres", 3: "Dijous", 4: "Divendres", 5: "Dissabte", 6: "Diumenge"}
+        if type_of_query == "Timetables":
+            today_day = dies[datetime.date.today().weekday()]
+            today_hour = datetime.datetime.today().hour
+            print(today_hour, today_day)
+            split_index=0
+            for i in range(len(data)):
+                for j in data[i].keys():
+                    if data[i][j]==today_day and data[i]["hour"]>=today_hour and split_index==0:
+                        split_index=i
+                        print(split_index)
+            aux=data[0:split_index]
+            data=data[split_index:]
+            data.extend(aux)
+        print(data)
         for i, row in enumerate(data):
             aux = []
             for title in self.titles[type_of_query]:
@@ -309,7 +324,7 @@ class Window(Gtk.Window):
                 if title=="date":
                     add_cell=add_cell.split("T")[0]
                 elif title=="hour":
-                    add_cell=str(datetime.timedelta(hours=int(row[title].split(":")[0])))
+                    add_cell=str(datetime.timedelta(hours=row[title]))
                 aux.append(add_cell)
                 if i% 2 == 0:
                     background_color = "#fff"
