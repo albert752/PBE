@@ -1,0 +1,3 @@
+{ "_id" : { "$oid" : "5bfec4747b0ec026a22c1760" }, "uid" : "8BBBF395", "user_name" : "Pol Pérez Granero" }
+{ "_id" : { "$oid" : "5bfec4747b0ec026a22c1761" }, "uid" : "4B82F395", "user_name" : "Albert Azemar i Rovira" }
+{ "_id" : { "$oid" : "5bfec4747b0ec026a22c1762" }, "uid" : "7B4AF295", "user_name" : "Marc Sarri McBride" }

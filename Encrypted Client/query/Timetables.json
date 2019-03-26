@@ -1,0 +1,27 @@
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c175b" }, "uid" : "8BBBF395", "subject" : "RP", "hour" : 8, "day" : "Dilluns", "room" : "A4105" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c175c" }, "uid" : "7B4AF295", "horari" : [ { "subject" : "RP", "hour" : "8:00", "day" : "Dilluns", "room" : "D3006" }, { "subject" : "TD", "hour" : "10:00", "day" : "Dilluns", "room" : "A4104" }, { "subject" : "DSBM", "hour" : "13:00", "day" : "Dilluns", "room" : "A4104" }, { "subject" : "Lab DSBM", "hour" : "8:00", "day" : "Dimarts", "room" : "C5S101A" }, { "subject" : "PSAVC", "hour" : "10:00", "day" : "Dimarts", "room" : "A4104" }, { "subject" : "RP", "hour" : "12:00", "day" : "Dimarts", "room" : "A4104" }, { "subject" : "Lab PBE", "hour" : "15:00", "day" : "Dimecres", "room" : "C3S103" }, { "subject" : "PBE", "hour" : "8:00", "day" : "Dijous", "room" : "A3001" }, { "subject" : "PSAVC", "hour" : "10:00", "day" : "Dijous", "room" : "A4104" }, { "subject" : "TD", "hour" : "12:00", "day" : "Dijous", "room" : "A4104" }, { "subject" : "DSBM", "hour" : "8:00", "day" : "Divendres", "room" : "A4104" }, { "subject" : "PSAVC", "hour" : "10:00", "day" : "Divendres", "room" : "A4104" }, { "subject" : "RP", "hour" : "11:00", "day" : "Divendres", "room" : "A4104" } ] }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c175d" }, "uid" : "8BBBF395", "subject" : "PSAVC", "hour" : 10, "day" : "Dilluns", "room" : "A4105" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c175e" }, "uid" : "8BBBF395", "subject" : "LabRP", "hour" : 12, "day" : "Dilluns", "room" : "D3006" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c175f" }, "uid" : "8BBBF395", "subject" : "TD", "hour" : 8, "day" : "Dimarts", "room" : "A4105" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c1760" }, "uid" : "8BBBF395", "subject" : "PSAVC", "hour" : 11, "day" : "Dimarts", "room" : "A4105" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c1761" }, "uid" : "8BBBF395", "subject" : "Lab DSBM", "hour" : 12, "day" : "Dimarts", "room" : "C5S101A" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c1762" }, "uid" : "8BBBF395", "subject" : "Lab PBE", "hour" : 15, "day" : "Dimecres", "room" : "C3S103" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c1763" }, "uid" : "8BBBF395", "subject" : "PBE", "hour" : 8, "day" : "Dijous", "room" : "A3001" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c1764" }, "uid" : "8BBBF395", "subject" : "DSBM", "hour" : 10, "day" : "Dijous", "room" : "A4105" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c1765" }, "uid" : "8BBBF395", "subject" : "RP", "hour" : 12, "day" : "Dijous", "room" : "A4105" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c1766" }, "uid" : "8BBBF395", "subject" : "PSAVC", "hour" : 8, "day" : "Divendres", "room" : "A4105" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c1767" }, "uid" : "8BBBF395", "subject" : "DSBM", "hour" : 10, "day" : "Divendres", "room" : "A4105" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c1768" }, "uid" : "8BBBF395", "subject" : "TD", "hour" : 11, "day" : "Divendres", "room" : "A4105" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c1775" }, "uid" : "4B82F395", "subject" : "RP", "hour" : 8, "day" : "Dilluns", "room" : "A4105" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c1769" }, "uid" : "4B82F395", "subject" : "PSAVC", "hour" : 10, "day" : "Dilluns", "room" : "A4105" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c176a" }, "uid" : "4B82F395", "subject" : "LabRP", "hour" : 12, "day" : "Dilluns", "room" : "D3006" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c176b" }, "uid" : "4B82F395", "subject" : "TD", "hour" : 8, "day" : "Dimarts", "room" : "A4105" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c176c" }, "uid" : "4B82F395", "subject" : "PSAVC", "hour" : 11, "day" : "Dimarts", "room" : "A4105" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c176d" }, "uid" : "4B82F395", "subject" : "Lab DSBM", "hour" : 12, "day" : "Dimarts", "room" : "C5S101A" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c176e" }, "uid" : "4B82F395", "subject" : "Lab PBE", "hour" : 15, "day" : "Dimecres", "room" : "C3S103" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c176f" }, "uid" : "4B82F395", "subject" : "PBE", "hour" : 8, "day" : "Dijous", "room" : "A3001" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c1770" }, "uid" : "4B82F395", "subject" : "DSBM", "hour" : 10, "day" : "Dijous", "room" : "A4105" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c1771" }, "uid" : "4B82F395", "subject" : "RP", "hour" : 12, "day" : "Dijous", "room" : "A4105" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c1772" }, "uid" : "4B82F395", "subject" : "PSAVC", "hour" : 8, "day" : "Divendres", "room" : "A4105" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c1773" }, "uid" : "4B82F395", "subject" : "DSBM", "hour" : 10, "day" : "Divendres", "room" : "A4105" }
+{ "_id" : { "$oid" : "5bfebd537b0ec026a22c1774" }, "uid" : "4B82F395", "subject" : "TD", "hour" : 11, "day" : "Divendres", "room" : "A4105" }
